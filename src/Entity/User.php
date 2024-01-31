@@ -6,10 +6,12 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: '`user`')]
-class User
+class User implements PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -26,7 +28,7 @@ class User
     private ?string $pseudo = null;
 
     #[ORM\Column(length: 180)]
-    private ?string $role = null;
+    private ?array $role = null;
 
     #[ORM\OneToMany(mappedBy: 'users', targetEntity: Category::class)]
     private Collection $category;
@@ -77,12 +79,12 @@ class User
         return $this;
     }
 
-    public function getRole(): ?string
+    public function getRole(): ?array
     {
         return $this->role;
     }
 
-    public function setRole(string $role): static
+    public function setRole(array $role): static
     {
         $this->role = $role;
 
@@ -97,7 +99,7 @@ class User
         return $this->category;
     }
 
-    public function addCategory(Category $category): static
+   /* public function addCategory(Category $category): static
     {
         if (!$this->category->contains($category)) {
             $this->category->add($category);
@@ -117,5 +119,6 @@ class User
         }
 
         return $this;
-    }
+    }*/
+
 }

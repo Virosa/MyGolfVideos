@@ -111,4 +111,16 @@ class Video
 
         return $this;
     }
+
+    public function addCategory(Category $category): static
+    {
+        if ($this->category !== $category) {
+            $this->category = $category;
+            $category->addVideo($this);
+        }
+
+        return $this;
+    }
 }
+
+
