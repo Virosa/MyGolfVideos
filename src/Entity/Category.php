@@ -90,4 +90,9 @@ class Category
 
         return $this;
     }
+    public function add(Category $category): static
+    {
+
+    }
+
 }
