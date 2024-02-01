@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20240129210511 extends AbstractMigration
+final class Version20240201103003 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,14 +20,12 @@ final class Version20240129210511 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE category ADD slug VARCHAR(255) NOT NULL');
-        $this->addSql('ALTER TABLE video ADD slug VARCHAR(255) NOT NULL');
+        $this->addSql('ALTER TABLE user CHANGE role role JSON DEFAULT NULL');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE category DROP slug');
-        $this->addSql('ALTER TABLE video DROP slug');
+        $this->addSql('ALTER TABLE `user` CHANGE role role VARCHAR(180) NOT NULL');
     }
 }
