@@ -3,17 +3,30 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
 
-    {{ form_errors(registrationForm) }}
+    <main>
+        <div class="grid-container">
+            <div class="grid-child-image">
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.mail) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+                <img src="{{ asset('Images/fairwayWater.png') }}" alt="faireway with water" class="image-faireway" title="Fairway with water">
+            </div>
+            <div class="grid-child-form">
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+                <h1>Créer un compte </h1>
+
+                {{ form_errors(registrationForm) }}
+
+                {{ form_start(registrationForm) }}
+                {{ form_row(registrationForm.mail) }}
+                {{ form_row(registrationForm.plainPassword, {
+                    label: 'Password'
+                }) }}
+                {{ form_row(registrationForm.agreeTerms) }}
+
+                <button type="submit" class="btn">Valider</button>
+                {{ form_end(registrationForm) }}
+
+            </div>
+
+
 {% endblock %}
