@@ -1,0 +1,40 @@
+/*.registration-form{
+    display: flex;
+    flex-direction: row;
+    !*align-items: center;*!
+    justify-content: space-around;
+}*/
+
+.forminfo > div > label{
+    margin-right: 20px;
+
+}
+.forminfo{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+}
+
+
+
+/*forminfo > div{
+    margin-bottom: 20px;
+    !*display: flex;
+    flex-direction: column;*!
+}
+
+
+
+.forminfo > div > input{
+    border-radius: 30px;
+    height: 1.25rem;
+    margin-top: 5px;
+    width: 100%;
+    border: none;
+}
+
+.forminfo > div > input {
+    border-radius : 0.37rem;
+    padding : 0.3rem;
+}*/
