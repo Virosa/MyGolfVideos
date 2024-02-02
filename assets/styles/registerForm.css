@@ -1,0 +1,46 @@
+
+
+div.register{
+    padding-top: 1%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+}
+
+.register-form {
+    font-size: 19px;
+    height: 42px;
+    border-radius: 11px;
+    margin-bottom: 39px;
+    display: flex;
+    padding: 0 30px;
+    width: 85%;
+}
+
+div.register > form.register > div {
+    font-size: 19px;
+    height: 42px;
+    border-radius: 11px;
+    margin-bottom: 39px;
+    display: flex;
+    padding: 0 30px;
+    width: 85%;
+}
+ button.btn{
+     padding-top: 0.5rem;
+     padding-bottom: 0.5rem;
+     padding-right: 1rem;
+     padding: left;
+     padding-left: 1rem;
+     border-radius: 6px;
+     justify-content: right;
+}
+
+ label {
+     color: #4ECCA3;
+     font-weight: bold;
+ }
+
+

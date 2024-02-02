@@ -22,13 +22,12 @@ class UserFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $admin = new User();
-        $admin->setMail('admin@gmail.fr');
-        $admin->setPassword("toto");
+        $admin->setEmail('admin@gmail.fr');
         $admin->setPassword(
             $this->passwordHasher->hashPassword($admin, 'passadmino')
         );
-        $admin ->setPseudo('Admino');
-        $admin ->setRole(['ROLE_ADMIN']);
+        $admin ->setName('Admino');
+        $admin ->setRoles(['ROLE_ADMIN']);
 
         $manager->persist ($admin);
 
@@ -37,12 +36,12 @@ class UserFixtures extends Fixture
         for ($usr = 1; $usr <= 5; $usr++)
         {
             $user = new User();
-            $user ->setMail($faker->email);
-            $user->setRole(['ROLE_USER']);
+            $user ->setEmail($faker->email);
+            $user->setRoles(['ROLE_USER']);
             $user ->setPassword(
                 $this->passwordHasher->hashPassword($user, 'secret')
             );
-            $user->setPseudo($faker->firstName);
+            $user->setName($faker->firstName);
 
             $manager -> persist ($user);
         }

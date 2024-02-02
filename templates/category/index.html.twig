@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Category index{% endblock %}
+
+{% block body %}
+    <h1> Mes catégories </h1>
+
+    <div class="new">
+        <a href="{{ path('app_category_new') }}">J'ajoute une catégorie</a>
+{#        <a href="{{ path('app_video_new') }}">J'ajoute une video</a>#}
+    </div>
+
+   <h2>
+       Ma liste
+   </h2>
+
+    <div>
+        {% for category in categories %}
+        <ul>
+
+         <li>{{ category.name }} : <a href="{{ path('app_category_show', {'id': category.id}) }}"></a>
+                 <a href="{{ path('app_category_edit', {'id': category.id}) }}">modifier</a></li>
+        </ul>
+
+        {% endfor %}
+    </div>
+    <div class="slider-img">
+
+        <img class="img1" src="/images/ballHole.png" alt="logo" />
+        <img class="img2" src="/images/ballsPractrice.png" alt="logo" />
+        <img class="img3" src="/images/woman-432047_1280jpg.png" alt="logo" />
+
+</div>
+
+
+
+
+
+
+{#    <table class="table">#}
+{#        <thead>#}
+{#            <tr>#}
+{#                <th>Id</th>#}
+{#                <th>Name</th>#}
+{#                <th>actions</th>#}
+{#            </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#        {% for category in categories %}#}
+{#            <tr>#}
+{#                <td>{{ category.id }}</td>#}
+{#                <td>{{ category.name }}</td>#}
+{#                <td>#}
+{#                    <a href="{{ path('app_category_show', {'id': category.id}) }}">show</a>#}
+{#                    <a href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a>#}
+{#                </td>#}
+{#            </tr>#}
+{#        {% else %}#}
+{#            <tr>#}
+{#                <td colspan="4">no records found</td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+{#        </tbody>#}
+{#    </table>#}
+
+    {#<script type="text/javascript">
+        $('.multiple-items').slick({
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 3
+        });
+    </script>#}
+
+    {% block script %}
+        {{ parent() }}
+        <script type="text/javascript">
+            $('.slider').slick({
+                centerMode: true,
+                centerPadding: '60px',
+                slidesToShow: 3,
+                autoplay: true,
+                autoplaySpeed: 2000,
+            });
+        </script>
+    {% endblock %}
+{% endblock %}
