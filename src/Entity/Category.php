@@ -27,6 +27,9 @@ class Category
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Video::class)]
     private Collection $video;
 
+    #[ORM\Column(type: 'string')]
+    private string $videoFilename;
+
     public function __construct()
     {
         $this->video = new ArrayCollection();
@@ -69,6 +72,17 @@ class Category
         return $this->video;
     }
 
+    public function getVideoFilename(): string
+    {
+        return $this->videoFilename;
+    }
+
+    public function setVideoFilename(string $videoFilename): self
+    {
+        $this->videoFilename = $videoFilename;
+
+        return $this;
+    }
     public function addVideo(Video $video): static
     {
         if (!$this->video->contains($video)) {
