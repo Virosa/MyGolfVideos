@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vidéo{% endblock %}
+
+
+{% block body %}
+    {% if app.user %}
+    <h1> Mes Vidéos </h1>
+        <div class="slider-img">
+
+            <img class="img1" src="/images/ballHole.png" alt="logo" />
+            <img class="img2" src="/images/ballsPractrice.png" alt="logo" />
+            <img class="img3" src="/images/woman-432047_1280jpg.png" alt="logo" />
+
+        </div>
+    {% else %}
+
+        Connectez vous pour avoir accès à cette page.
+
+        <a href="{{ path('app_login') }}">Se connecter</a>
+
+    {% endif %}
+    {% block script %}
+        {{ parent() }}
+        <script type="text/javascript">
+            $('.slider').slick({
+                centerMode: true,
+                centerPadding: '60px',
+                slidesToShow: 3,
+                autoplay: true,
+                autoplaySpeed: 2000,
+            });
+        </script>
+    {% endblock %}
+{% endblock %}
