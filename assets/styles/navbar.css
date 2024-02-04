@@ -28,7 +28,9 @@
     color: white;
     font-size: 1rem;
 }
-
+span.nav-link {
+    padding-right: 10rem ;
+}
 .navbar-left {
     text-decoration: none;
     color: white;

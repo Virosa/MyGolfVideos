@@ -28,7 +28,7 @@ class Category
     private Collection $video;
 
     #[ORM\Column(type: 'string')]
-    private string $videoFilename;
+    private ?string $videoFilename = null;
 
     public function __construct()
     {
@@ -104,9 +104,9 @@ class Category
 
         return $this;
     }
-    public function add(Category $category): static
-    {
-
-    }
+//    public function add(Category $category): static
+//    {
+//
+//    }
 
 }
