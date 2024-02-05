@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+{#        <form method="post" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">#}
+{#            <input name="email">#}
+{#            <input name="password">#}
+{#            <button type="submit">connection</button>#}
+{#        </form>#}
+
+        <div class="grid-container">
+            <div class="grid-child-image">
+
+                <img src="{{ asset('Images/fairwayWater.png') }}" alt="faireway with water" class="image-faireway" title="Fairway with water">
+            </div>
+            <div class="grid-child-form">
+                <h1 class="h3 mb-3 font-weight-normal">Se connecter</h1>
+
+                <form method="post">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+
+                    {#{% if app.user %}
+                        <div class="mb-3">
+                            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                        </div>
+                    {% endif %}#}
+
+
+                    <label for="email">Mail</label>
+                    <input type="email" value="{{ last_username }}" name="_username" id="email" class="form-control" autocomplete="email" required autofocus>
+                    <label for="password">Password</label>
+                    <input type="password" name="_password" id="password" class="form-control" autocomplete="current-password" required>
+
+                    <input type="hidden" name="_csrf_token"
+                           value="{{ csrf_token('authenticate') }}"
+                    >
+
+
+{#                    Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.#}
+{#                    See https://symfony.com/doc/current/security/remember_me.html#}
+
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" name="_remember_me"> Remember me
+                        </label>
+                    </div>
+
+
+                    <button class="btn btn-lg btn-primary" type="submit">
+                        Se connecter
+                    </button>
+                </form>
+
+            </div>
+        </div>
+{% endblock %}
