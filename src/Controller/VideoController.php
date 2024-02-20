@@ -24,14 +24,14 @@ class VideoController extends AbstractController
     {
         $videos = $videoRepository->findAll();
 
-        return $this->render('video/Video.html.twig', [
+        return $this->render('video/index.html.twig', [
             'videos' => $videos,
         ]);
     }
 
     #[Route('/new', name: 'upload_video')]
     public function new(
-        Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger, $newFileName): Response
+        Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $video = new Video();
         $form = $this->createForm(VideoType::class, $video);
@@ -46,29 +46,40 @@ class VideoController extends AbstractController
             $video->setSlug($slugger->slug($video->getTitle())->lower());
             // this condition is needed because the 'category' field is not required
             // so the file must be processed only when a file is uploaded
-            if ($videoFile) {
+            if ($videoFile && $imageFile) {
                 $originalFilename = pathinfo($videoFile->getClientOriginalName(), PATHINFO_FILENAME);
                 // this is needed to safely include the file name as part of the URL
                 $safeFilename = $slugger->slug($originalFilename);
-                $newFilename = $safeFilename . '-' . uniqid() . '.' . $videoFile->guessExtension();
+                $newFileName = $safeFilename . '-' . uniqid() . '.' . $videoFile->guessExtension();
 
+                $imageOriginalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $imageSafeFilename = $slugger->slug($imageOriginalFilename);
+                $imageNewFileName = $imageSafeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
                 // Move the file to the directory where videos are stored
                 try {
-                    $videoFile->move($this->getParameter('/public/upload/videos'), $newFileName);
+
+                    $videoFile->move($this->getParameter('images_directory'), $newFileName);
+                    $imageFile->move($this->getParameter('videos_directory'), $imageNewFileName);
+                    $video->setFile($newFileName);
+                    $video->setImage($imageNewFileName);
+                    $entityManager->persist($video);
+                    $entityManager->flush();
+                    return $this->redirectToRoute('app_video');
 
                 } catch (FileException $e) {
                     return $this->redirectToRoute('app_video');
                 }
-                $video->setCategory($newFileName);
             }
-            $entityManager->persist($video);
-            $entityManager->flush();
-            return $this->redirectToRoute('app_video');
+
         }
         return $this->render('video/newVideo.html.twig', [
             'form' => $form,
             'videos' => $video,
         ]);
     }
+
+
+
 
 }

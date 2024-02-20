@@ -28,7 +28,6 @@ class CategoryFixtures extends Fixture
         foreach (self::CATEGORIES as $categoryName => $videoFilename) {
             $category = new Category();
             $category->setName($categoryName);
-            $category->setVideoFilename ($videoFilename);
             $slug = $this->slugger->slug($category->getName());
             $category->setSlug($slug);
             $manager->persist($category);

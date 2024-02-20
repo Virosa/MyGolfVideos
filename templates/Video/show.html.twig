@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vidéo{% endblock %}
+
+{% block body %}
+    {% if app.user %}
+        <h1> Toutes les Vidéos </h1>
+        <div class="video-detail">
+            {% if video.file %}
+                <div class="video-embed">
+                    <video width="1280" height="720" controls>
+{#                        <source src="{{ asset('/upload/videos/' ~ video.file) }}" type="video/mp4">#}
+                        <source src="{{ asset('/upload/videos/' ~ video.file) }}" type="video/{{ video.file|split('.')[-1] }}">
+                        Your browser does not support the video tag.
+                    </video>
+{#                    <img src="{{'/upload/images/' ~ video.image }}" alt="{{ video.title }}">#}
+
+                </div>
+            {% endfor %}
+        </div>
+            {% else %}
+                Connectez-vous pour avoir accès à cette page.
+                <a href="{{ path('app_login') }}">Se connecter</a>
+            {% endif %}
+
+
+    {% block script %}
+        {{ parent() }}
+        <script type="text/javascript">
+            $('.slider').slick({
+                centerMode: true,
+                centerPadding: '60px',
+                slidesToShow: 3,
+                autoplay: true,
+                autoplaySpeed: 2000,
+            });
+        </script>
+
+{% endblock script %}
+
+{% endblock %}

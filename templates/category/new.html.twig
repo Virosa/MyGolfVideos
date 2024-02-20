@@ -3,9 +3,19 @@
 {% block title %}New Category{% endblock %}
 
 {% block body %}
+
+<div class="grid-container">
+    <div class="grid-child-image">
+
+        <img src="{{ asset('Images/fairwayWater.png') }}" alt="faireway with water" class="image-faireway" title="Fairway with water">
+    </div>
+
+    <div class="grid-child-form">
     <h1>Créer ma nouvelle catégorie</h1>
 
     {{ include('category/_form.html.twig') }}
 
     <a href="{{ path('app_category_index') }}">back to list</a>
+
+    </div>
 {% endblock %}

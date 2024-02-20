@@ -3,21 +3,27 @@
 {% block title %}Nouvelle vidéo{% endblock %}
 
 {% block body %}
-<h1> Ajouter une vidéo </h1>
+    <div class="grid-container">
+    <div class="grid-child-image">
 
-    <div class="register">
-        <h1 class="form-title">Ajouter une vidéo</h1>
+        <img src="{{ asset('Images/fairwayWater.png') }}" alt="faireway with water" class="image-faireway" title="Fairway with water">
+    </div>
+    <div class="grid-child-form">
 
-        {{ form_errors(form) }}
+            <div class="register">
+                <h1 class="form-title">Ajouter une vidéo</h1>
 
-        {{ form_start(form, {'attr': {'class': 'register'}}) }}
-        {{ form_row(form.title, {'attr': {'class': 'register-form'}}) }}
-        {{ form_row(form.file, {'attr': {'class': 'register-form'}}) }}
-        {{ form_row(form.image, {'attr': {'class': 'register-form'}}) }}
-        {{ form_row(form.description, {'attr': {'class': 'register-form'}}) }}
-        {{ form_row(form.category, {'attr': {'class': 'register-form'}}) }}
+                {{ form_errors(form) }}
 
-        <button type="submit" class="btn-register">Valider</button>
-        {{ form_end(form) }}
+                {{ form_start(form, {'attr': {'class': 'register'}}) }}
+                {{ form_row(form.title, {'attr': {'class': 'register-form'}}) }}
+                {{ form_row(form.file, {'attr': {'class': 'register-form'}}) }}
+                {{ form_row(form.image, {'attr': {'class': 'register-form'}}) }}
+                {{ form_row(form.description, {'attr': {'class': 'register-form'}}) }}
+                {{ form_row(form.category, {'attr': {'class': 'register-form'}}) }}
+
+                <button type="submit" class="btn-register">Valider</button>
+                {{ form_end(form) }}
+            </div>
     </div>
 {% endblock %}
