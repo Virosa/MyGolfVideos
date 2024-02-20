@@ -24,13 +24,12 @@ class VideoType extends AbstractType
                 'required' => false,
                 'constraints' => [
                     new File([
-                        'maxSize' => '10000k',
+                        'maxSize' => '1000000k',
                         'mimeTypes' => [
 
                             'video/mp4',
                             'video/webm',
                             'video/ogg',
-                            'video/x-msvideo',
                             'video/mov',
                             'video/mpeg',
                         ],
@@ -45,7 +44,7 @@ class VideoType extends AbstractType
                 'required' => false,
                 'constraints' => [
                     new File([
-                        'maxSize' => '1024k',
+                        'maxSize' => '102400k',
                         'mimeTypes' => [
                             'image/jpeg',
                             'image/png',
@@ -63,7 +62,7 @@ class VideoType extends AbstractType
             ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'name',
-                'multiple' => true ,
+                'multiple' => false ,
                 'expanded' => true ,
                 'by_reference' => false ,
                 'required' => false,

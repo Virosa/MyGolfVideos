@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vidéo{% endblock %}
+
+{% block body %}
+    {% if app.user %}
+        <h1> Toutes les Vidéos </h1>
+        <div class="slider-img">
+            {% for video in videos %}
+                <div class="video">
+                <a href="{{ path('app_video', {'title': video.title}) }}">
+
+                    <img src="{{'/upload/images/' ~ video.image }}" alt="{{ video.title }}">
+                </a>
+
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        Connectez-vous pour avoir accès à cette page.
+        <a href="{{ path('app_login') }}">Se connecter</a>
+    {% endif %}
+{% endblock %}

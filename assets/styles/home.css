@@ -1,16 +1,22 @@
 
 
 
-main {
+body {
     background-color: #D9D9D9;
 }
 
+.welcome {
+    padding-left: 4rem;
+}
 h1 {
     padding-top: 2rem;
     color: #4ECCA3;
     padding-bottom: 2rem;
 }
 
+.image-faireway {
+    width: 100%;
+}
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -21,9 +27,8 @@ h1 {
 
 .grid-child-form {
     margin-top: 2rem;
-    margin-left: 1rem;
+    /*margin-left: 1rem;*/
 }
-
 
 
 p {
@@ -41,14 +46,15 @@ p {
     }
 
     .image-faireway {
+        img {
+            height: 200px;
+        }
         width: 100%;
-        /*height: 50%;*/
 
     }
 
     .welcome {
         padding-top: 1.5rem;
     }
-
 
 }

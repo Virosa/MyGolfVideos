@@ -25,7 +25,7 @@ class Category
     private ?User $users = null;
 
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Video::class)]
-    private Collection $video;
+    private ?Collection $video;
 
     public function __construct()
     {
